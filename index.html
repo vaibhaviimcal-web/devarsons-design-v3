@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devarsons Industries | Design V3 - Premium Luxury</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --gold: #C9A961;
+            --dark-gold: #B8954A;
+            --black: #0A0A0A;
+            --dark-grey: #1A1A1A;
+            --white: #FFFFFF;
+            --cream: #F8F6F3;
+            --text-light: #999;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--black);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* Landing Page - Luxury */
+        .landing {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: var(--black);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            transition: opacity 2s ease;
+        }
+
+        .landing.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .landing::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(201, 169, 97, 0.05) 0%, transparent 70%);
+        }
+
+        .philosophy-sequence {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .philosophy-line {
+            margin: 2.5rem 0;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .philosophy-verb {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 300;
+            color: var(--gold);
+            font-style: italic;
+            letter-spacing: 0.05em;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .philosophy-object {
+            font-size: 1rem;
+            color: var(--text-light);
+            font-weight: 300;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+        }
+
+        .landing-brand {
+            margin-top: 6rem;
+            text-align: center;
+            opacity: 0;
+            transform: scale(0.9);
+            position: relative;
+            z-index: 2;
+        }
+
+        .landing-brand img {
+            max-width: 380px;
+            margin-bottom: 2.5rem;
+            filter: drop-shadow(0 0 60px rgba(201, 169, 97, 0.3));
+        }
+
+        .landing-motto {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            font-style: italic;
+            color: var(--gold);
+            letter-spacing: 0.2em;
+            font-weight: 300;
+        }
+
+        .landing-enter {
+            margin-top: 4rem;
+            padding: 1.2rem 3.5rem;
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            cursor: pointer;
+            transition: all 0.5s ease;
+            text-transform: uppercase;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .landing-enter:hover {
+            background: var(--gold);
+            color: var(--black);
+            box-shadow: 0 0 40px rgba(201, 169, 97, 0.5);
+        }
+
+        /* Main Site */
+        .main-site {
+            display: none;
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .main-site.active {
+            display: block;
+            animation: luxuryFadeIn 2s ease;
+        }
+
+        @keyframes luxuryFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Navigation - Elegant */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 2rem 5%;
+            border-bottom: 1px solid rgba(201, 169, 97, 0.2);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo img {
+            height: 50px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 4rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 400;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width 0.3s;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .nav-menu a:hover {
+            color: var(--gold);
+        }
+
+        /* Hero - Luxury */
+        .hero {
+            min-height: 100vh;
+            padding: 12rem 5% 8rem;
+            background: var(--black);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(201, 169, 97, 0.08) 0%, transparent 60%);
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-label {
+            font-size: 0.85rem;
+            color: var(--gold);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .hero-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 7rem;
+            font-weight: 300;
+            line-height: 1;
+            margin-bottom: 3rem;
+            color: var(--white);
+        }
+
+        .hero-title .gold {
+            color: var(--gold);
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .hero-description {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            margin-bottom: 4rem;
+            max-width: 700px;
+            line-height: 1.9;
+            font-weight: 300;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            padding: 1.3rem 3.5rem;
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            transition: all 0.5s ease;
+            text-transform: uppercase;
+        }
+
+        .hero-cta:hover {
+            background: var(--gold);
+            color: var(--black);
+            box-shadow: 0 0 40px rgba(201, 169, 97, 0.4);
+        }
+
+        /* Heritage Section */
+        .heritage-section {
+            padding: 8rem 5%;
+            background: var(--dark-grey);
+            border-top: 1px solid rgba(201, 169, 97, 0.2);
+            border-bottom: 1px solid rgba(201, 169, 97, 0.2);
+        }
+
+        .heritage-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .heritage-year {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 8rem;
+            font-weight: 300;
+            color: var(--gold);
+            line-height: 1;
+            margin-bottom: 2rem;
+            opacity: 0.3;
+        }
+
+        .heritage-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 300;
+            margin-bottom: 3rem;
+            color: var(--white);
+        }
+
+        .heritage-text {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            line-height: 2;
+            max-width: 900px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        /* Excellence Grid */
+        .excellence-section {
+            padding: 8rem 5%;
+            background: var(--black);
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 6rem;
+        }
+
+        .section-heading h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 300;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+
+        .section-heading h2 .gold {
+            color: var(--gold);
+            font-style: italic;
+        }
+
+        .section-heading p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            font-weight: 300;
+            letter-spacing: 0.1em;
+        }
+
+        .excellence-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .excellence-card {
+            background: var(--dark-grey);
+            padding: 4rem 3rem;
+            border: 1px solid rgba(201, 169, 97, 0.2);
+            transition: all 0.5s ease;
+        }
+
+        .excellence-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .excellence-icon {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            opacity: 0.7;
+        }
+
+        .excellence-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .excellence-desc {
+            font-size: 1rem;
+            color: var(--text-light);
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        /* Certifications - Luxury */
+        .certifications-section {
+            padding: 8rem 5%;
+            background: var(--dark-grey);
+            border-top: 1px solid rgba(201, 169, 97, 0.2);
+        }
+
+        .cert-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .cert-card {
+            background: var(--black);
+            padding: 4rem 3rem;
+            border: 1px solid rgba(201, 169, 97, 0.2);
+            text-align: center;
+            transition: all 0.5s ease;
+        }
+
+        .cert-card:hover {
+            border-color: var(--gold);
+            box-shadow: 0 0 40px rgba(201, 169, 97, 0.2);
+        }
+
+        .cert-icon {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .cert-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .cert-desc {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-weight: 300;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        /* Content Section */
+        .content-section {
+            padding: 8rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .content-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 300;
+            margin-bottom: 3rem;
+            color: var(--white);
+        }
+
+        .content-section h2 .gold {
+            color: var(--gold);
+            font-style: italic;
+        }
+
+        .content-section p {
+            font-size: 1.15rem;
+            line-height: 2;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .luxury-quote {
+            background: var(--dark-grey);
+            border-left: 2px solid var(--gold);
+            padding: 4rem;
+            margin: 5rem 0;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-style: italic;
+            color: var(--white);
+            line-height: 1.7;
+        }
+
+        .luxury-quote-author {
+            font-family: 'Montserrat', sans-serif;
+            font-style: normal;
+            font-size: 1rem;
+            color: var(--gold);
+            margin-top: 2rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+        }
+
+        /* Products - Elegant */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .product-item {
+            background: var(--dark-grey);
+            padding: 3.5rem 3rem;
+            border: 1px solid rgba(201, 169, 97, 0.2);
+            transition: all 0.5s ease;
+        }
+
+        .product-item:hover {
+            border-color: var(--gold);
+            transform: translateY(-8px);
+        }
+
+        .product-item h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .product-item p {
+            font-size: 1rem;
+            color: var(--text-light);
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        /* Footer - Luxury */
+        footer {
+            background: var(--dark-grey);
+            color: var(--white);
+            padding: 6rem 5% 3rem;
+            border-top: 1px solid rgba(201, 169, 97, 0.2);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 5rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-logo img {
+            max-width: 220px;
+            margin-bottom: 2.5rem;
+        }
+
+        .footer-motto {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-style: italic;
+            color: var(--gold);
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            color: var(--gold);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 1.2rem;
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+            font-weight: 300;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(201, 169, 97, 0.2);
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.85rem;
+            font-weight: 300;
+            letter-spacing: 0.1em;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .philosophy-verb {
+                font-size: 2.5rem;
+            }
+
+            .hero-title {
+                font-size: 4rem;
+            }
+
+            .section-heading h2 {
+                font-size: 2.5rem;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Landing Page -->
+    <div class="landing" id="landing">
+        <div class="philosophy-sequence">
+            <div class="philosophy-line" id="p1">
+                <span class="philosophy-verb">Listen</span>
+                <span class="philosophy-object">to the customer</span>
+            </div>
+            <div class="philosophy-line" id="p2">
+                <span class="philosophy-verb">Understand</span>
+                <span class="philosophy-object">the problem</span>
+            </div>
+            <div class="philosophy-line" id="p3">
+                <span class="philosophy-verb">Define</span>
+                <span class="philosophy-object">the path</span>
+            </div>
+            <div class="philosophy-line" id="p4">
+                <span class="philosophy-verb">Iterate</span>
+                <span class="philosophy-object">the product</span>
+            </div>
+            <div class="philosophy-line" id="p5">
+                <span class="philosophy-verb">Dominate</span>
+                <span class="philosophy-object">the market</span>
+            </div>
+        </div>
+        
+        <div class="landing-brand" id="brandContainer">
+            <img src="https://nyc3.digitaloceanspaces.com/bhindi-drive/files/cab453ed-7d3e-4dfa-9012-038dbc50c1c5/2025-12-05T07-12-42-590Z-32a28241-chat-image-1764918762570-0.jpg" alt="Devarsons Industries">
+            <div class="landing-motto">The Colour Solution Company</div>
+        </div>
+        
+        <button class="landing-enter" onclick="enterLuxurySite()">Enter</button>
+    </div>
+
+    <!-- Main Website -->
+    <div class="main-site" id="mainSite">
+        <!-- Navigation -->
+        <nav>
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <img src="https://nyc3.digitaloceanspaces.com/bhindi-drive/files/cab453ed-7d3e-4dfa-9012-038dbc50c1c5/2025-12-05T07-12-42-590Z-32a28241-chat-image-1764918762570-0.jpg" alt="Devarsons">
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#heritage">Heritage</a></li>
+                    <li><a href="#philosophy">Philosophy</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <div class="hero-label">Since 1923</div>
+                <h1 class="hero-title">
+                    A Century of<br>
+                    <span class="gold">Colour Mastery</span>
+                </h1>
+                <p class="hero-description">
+                    Devarsons Industries represents the pinnacle of specialty colorant manufacturing. 
+                    For over 102 years, we have crafted precision-engineered solutions for the world's 
+                    most discerning clients.
+                </p>
+                <a href="#heritage" class="hero-cta">Discover Our Legacy</a>
+            </div>
+        </section>
+
+        <!-- Heritage Section -->
+        <section class="heritage-section" id="heritage">
+            <div class="heritage-content">
+                <div class="heritage-year">1923</div>
+                <h2 class="heritage-title">A Legacy of Excellence</h2>
+                <p class="heritage-text">
+                    Established in 1923, Devarsons Industries has been at the forefront of colour innovation 
+                    for over a century. Our commitment to excellence, precision, and customer-centric solutions 
+                    has made us the preferred partner for multinational corporations worldwide. ISO certified, 
+                    SAP integrated, and debt-free, we represent stability, quality, and innovation in every molecule.
+                </p>
+            </div>
+        </section>
+
+        <!-- Excellence Section -->
+        <section class="excellence-section">
+            <div class="section-heading">
+                <h2>Pillars of <span class="gold">Excellence</span></h2>
+                <p>What distinguishes Devarsons in the global marketplace</p>
+            </div>
+            
+            <div class="excellence-grid">
+                <div class="excellence-card">
+                    <div class="excellence-icon">🌍</div>
+                    <div class="excellence-title">Global MNC Partner</div>
+                    <div class="excellence-desc">Trusted supplier to multinational corporations across continents, delivering consistent quality and innovation.</div>
+                </div>
+                <div class="excellence-card">
+                    <div class="excellence-icon">📊</div>
+                    <div class="excellence-title">Statistical Precision</div>
+                    <div class="excellence-desc">Advanced quality control employing statistical tools to ensure batch-to-batch consistency.</div>
+                </div>
+                <div class="excellence-card">
+                    <div class="excellence-icon">🔬</div>
+                    <div class="excellence-title">Application Mastery</div>
+                    <div class="excellence-desc">Custom molecular solutions tailored for specific end-use applications across industries.</div>
+                </div>
+                <div class="excellence-card">
+                    <div class="excellence-icon">💼</div>
+                    <div class="excellence-title">SAP Integration</div>
+                    <div class="excellence-desc">Fully integrated SAP platform providing real-time transparency and traceability.</div>
+                </div>
+                <div class="excellence-card">
+                    <div class="excellence-icon">🌱</div>
+                    <div class="excellence-title">EHS Leadership</div>
+                    <div class="excellence-desc">Unwavering commitment to environmental, health, and safety standards beyond compliance.</div>
+                </div>
+                <div class="excellence-card">
+                    <div class="excellence-icon">⚡</div>
+                    <div class="excellence-title">Agile Excellence</div>
+                    <div class="excellence-desc">Decisive, lean management enabling rapid response to market demands.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications -->
+        <section class="certifications-section" id="certifications">
+            <div class="section-heading">
+                <h2><span class="gold">Accreditations</span> & Standards</h2>
+                <p>Certified excellence in quality, environment, and safety</p>
+            </div>
+            
+            <div class="cert-grid">
+                <div class="cert-card">
+                    <div class="cert-icon">🏆</div>
+                    <div class="cert-title">ISO 9001:2015</div>
+                    <div class="cert-desc">Quality Management</div>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon">🌱</div>
+                    <div class="cert-title">ISO 14001:2015</div>
+                    <div class="cert-desc">Environmental Management</div>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon">🛡️</div>
+                    <div class="cert-title">ISO 45001:2018</div>
+                    <div class="cert-desc">Health & Safety</div>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon">🌍</div>
+                    <div class="cert-title">Export House</div>
+                    <div class="cert-desc">Government Recognized</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Philosophy Section -->
+        <section class="content-section" id="philosophy">
+            <h2>Application-Driven <span class="gold">Innovation</span></h2>
+            <p>
+                Devarsons is an ISO 9001, ISO 14001 and ISO 45001 accredited company, developing and producing 
+                specialty colorants. The group was established in 1923 with manufacturing activity based in Ahmedabad. 
+                With over 100 years of experience in Color Application, our product range is specifically designed to 
+                cater to customers in various industries such as Cosmetics, Crop Protection, Plastics, Petroleum Products and others.
+            </p>
+            
+            <div class="luxury-quote">
+                "Don't find customers for your products, find products for your customers."
+                <div class="luxury-quote-author">— Seth Godin</div>
+            </div>
+
+            <p>
+                The emphasis within the organization is on developing new molecules or customizing current known molecules 
+                for use in highly specialized applications. Devarsons does not produce any one class of dye but rather an 
+                assortment of dyes with different chemistries to suit highly evolved applications.
+            </p>
+        </section>
+
+        <!-- Products Section -->
+        <section class="content-section" id="products">
+            <h2>Product <span class="gold">Portfolio</span></h2>
+            <p>Comprehensive range of specialty colorants for discerning applications</p>
+            
+            <div class="products-grid">
+                <div class="product-item">
+                    <h3>Solvent Colours</h3>
+                    <p>Premium colorants for industrial applications with superior performance characteristics.</p>
+                </div>
+                <div class="product-item">
+                    <h3>Food Colours</h3>
+                    <p>FDA approved colorants meeting the highest safety standards for food applications.</p>
+                </div>
+                <div class="product-item">
+                    <h3>Cosmetics Colours</h3>
+                    <p>EU Cosmetics, US FDA, and Schedule Q India compliant formulations.</p>
+                </div>
+                <div class="product-item">
+                    <h3>Acid, Basic & Direct</h3>
+                    <p>Versatile dye solutions for diverse industrial applications.</p>
+                </div>
+                <div class="product-item">
+                    <h3>Metal Complex Dyes</h3>
+                    <p>Advanced formulations offering superior fastness and performance.</p>
+                </div>
+                <div class="product-item">
+                    <h3>Pigments & Emulsions</h3>
+                    <p>High-quality pigment solutions for specialized applications.</p>
+                </div>
+                <div class="product-item">
+                    <h3>Lake Colours</h3>
+                    <p>Insoluble pigments for diverse coloring requirements.</p>
+                </div>
+                <div class="product-item">
+                    <h3>Liquid Dyes</h3>
+                    <p>Ready-to-use liquid formulations for ease of application.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <div>
+                    <div class="footer-logo">
+                        <img src="https://nyc3.digitaloceanspaces.com/bhindi-drive/files/cab453ed-7d3e-4dfa-9012-038dbc50c1c5/2025-12-05T07-12-42-590Z-32a28241-chat-image-1764918762570-0.jpg" alt="Devarsons">
+                    </div>
+                    <div class="footer-motto">The Colour Solution Company</div>
+                    <p style="color: var(--text-light); line-height: 1.9; font-weight: 300;">
+                        Established 1923 | ISO Certified | Global Excellence
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="#heritage">Heritage</a></li>
+                        <li><a href="#philosophy">Philosophy</a></li>
+                        <li><a href="#products">Products</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="#certifications">Certifications</a></li>
+                        <li><a href="#">Policies</a></li>
+                        <li><a href="#">R&D</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul class="footer-links">
+                        <li><a href="mailto:sales@devarsons.com">sales@devarsons.com</a></li>
+                        <li><a href="tel:+912223725120">+91 22 2372 5120</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                © 2025 Devarsons Industries Pvt. Ltd. All Rights Reserved.
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Landing Animation - Luxury
+        function animateLuxuryLanding() {
+            const lines = document.querySelectorAll('.philosophy-line');
+            const brand = document.getElementById('brandContainer');
+            
+            lines.forEach((line, index) => {
+                setTimeout(() => {
+                    line.style.opacity = '1';
+                    line.style.transform = 'translateY(0)';
+                    line.style.transition = 'all 1s cubic-bezier(0.4, 0, 0.2, 1)';
+                }, index * 700);
+            });
+            
+            setTimeout(() => {
+                lines.forEach(line => {
+                    line.style.opacity = '0';
+                    line.style.transform = 'translateY(-20px)';
+                });
+            }, 5000);
+            
+            setTimeout(() => {
+                brand.style.opacity = '1';
+                brand.style.transform = 'scale(1)';
+                brand.style.transition = 'all 1.5s cubic-bezier(0.4, 0, 0.2, 1)';
+            }, 5500);
+        }
+
+        function enterLuxurySite() {
+            document.getElementById('landing').classList.add('hidden');
+            setTimeout(() => {
+                document.getElementById('mainSite').classList.add('active');
+            }, 2000);
+        }
+
+        window.addEventListener('load', () => {
+            animateLuxuryLanding();
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
